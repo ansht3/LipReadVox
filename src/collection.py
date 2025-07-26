@@ -16,7 +16,7 @@ class LipReadingCollector:
         
         # initialize face detection and landmark prediction based on model
         self.detector = dlib.get_frontal_face_detector()
-        self.predictor = dlib.shape_predictor("model/") # TODO: add path to model
+        self.predictor = dlib.shape_predictor("model/shape_predictor_68_face_landmarks.dat")
         
         # create session-specific directory and parameters for recording
         self.session_id = datetime.now().strftime("%Y%m%d_%H%M%S")

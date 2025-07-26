@@ -9,7 +9,18 @@ import threading
 import queue
 
 class LipReaderPredictor:
-    def __init__(self, model_path, label_path):
+    def __init__(self, model_path="model/lip_reader_3dcnn.h5", label_path="model/labels.npy"):
+        # Check if model and labels exist
+        if not Path(model_path).exists():
+            print(f"❌ Model not found at {model_path}")
+            print("Please train the model first using model_training.py")
+            return
+            
+        if not Path(label_path).exists():
+            print(f"❌ Labels not found at {label_path}")
+            print("Please train the model first using model_training.py")
+            return
+            
         self.model = tf.keras.models.load_model(model_path)
         self.labels = np.load(label_path, allow_pickle=True)
         self.detector = dlib.get_frontal_face_detector()
@@ -24,6 +35,10 @@ class LipReaderPredictor:
         # visualization parameters
         self.prediction_history = deque(maxlen=5)
         self.confidence_threshold = 0.7
+        
+        print(f"✅ Model loaded successfully!")
+        print(f"   Classes: {list(self.labels)}")
+        print(f"   Model path: {model_path}")
         
     def preprocess_frame(self, frame):
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
