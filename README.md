@@ -248,22 +248,7 @@ LipReadVox/
 └── requirements.txt           # Dependencies
 ```
 
-## 🤝 Contributing
+### Next Steps
 
-Contributions are welcome! Please feel free to submit pull requests or open issues for:
-
-- Bug fixes
-- Performance improvements
-- New features
-- Documentation updates
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🙏 Acknowledgments
-
-- dlib library for face detection and landmark extraction
-- OpenCV for computer vision operations
-- TensorFlow for deep learning framework
-- The research community for lip reading methodologies
+1. **Improved model generalization with a diverse dataset.**
+2. **Real world deployment / integration within vision system**
